@@ -1,7 +1,10 @@
 package ru.spb;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -14,6 +17,11 @@ public class StepDefinitions {
     private RequestSpecification request = given();
     private Response response;
 
+    @Before
+    public void setUp() {
+        request.filter(new AllureRestAssured());
+    }
+
     @When("I send get method on {string}")
     public void sendGetRequestOn(String path) {
         response = request.get(path);
@@ -22,6 +30,11 @@ public class StepDefinitions {
     @Then("Status code is {int}")
     public void assertStatusCodeIs(int code) {
         assertThat(response.statusCode(), equalTo(code));
+    }
+
+    @After
+    public void logResponse() {
+       response.then().log().all();
     }
 
 }
