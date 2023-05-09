@@ -14,7 +14,7 @@
         <aspectj.version>1.9.5</aspectj.version>
         <cucumber.version>5.7.0</cucumber.version>
         <rest-assured.version>4.3.0</rest-assured.version>
-        <testng.version>7.1.0</testng.version>
+        <testng.version>7.5.1</testng.version>
         <!-- project encoding-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
